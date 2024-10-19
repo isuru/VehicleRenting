@@ -11,7 +11,7 @@ public class User {
     private String username, password;
     private String createdAt, lastLoginAt;
     
-    public static int currentUserId=1;
+    public static int currentUserId;
     public static String ERROR_MESSAGE;
     
     public User(String un) {
@@ -50,6 +50,9 @@ public class User {
             
         } catch (SQLException e) {
             ERROR_MESSAGE = e.getMessage();
+            
+        } finally {
+            DB.closeConnection();
         }
         
         return false;
@@ -101,7 +104,7 @@ public class User {
     
     public static ResultSet all() {
         ResultSet rs;
-        String sql = "SELECT * FROM User";
+        String sql = "SELECT * FROM User ORDER BY username";
         
         try {
             Statement st = DB.createConnection().createStatement();
@@ -109,9 +112,7 @@ public class User {
             return rs;
             
         } catch (SQLException e) {
-            ERROR_MESSAGE = e.getMessage();
-            System.err.println(e.getMessage());
-            
+            ERROR_MESSAGE = e.getMessage();  
         }
         
         return null;

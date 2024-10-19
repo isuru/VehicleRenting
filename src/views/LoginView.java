@@ -177,20 +177,21 @@ public class LoginView extends javax.swing.JFrame {
         un = this.txtUsername.getText();
         pw = new String(this.txtPassword.getPassword());
         
-        if (un.equals("") && pw.equals("")) {
+        if (un.isBlank() && pw.isBlank()) {
             JOptionPane.showConfirmDialog(this, "Please enter Username & Password", "Login", JOptionPane.DEFAULT_OPTION);
+            txtUsername.grabFocus();
         
-        } else if (un.equals("")) {
+        } else if (un.isBlank()) {
             JOptionPane.showConfirmDialog(this, "Please enter Username", "Login", JOptionPane.DEFAULT_OPTION);
             this.txtUsername.grabFocus();
             
-        } else if (pw.equals("")) {
+        } else if (pw.isBlank()) {
             JOptionPane.showConfirmDialog(this, "Please enter Password", "Login", JOptionPane.DEFAULT_OPTION);
             this.txtPassword.grabFocus();
             
         } else {      
             if(UserController.login(un, pw)) {
-                //JOptionPane.showConfirmDialog(this, "Login Success", "Login", JOptionPane.DEFAULT_OPTION);
+                JOptionPane.showConfirmDialog(this, "Login Successful", "Login", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
                 MainView f = new MainView();
                 f.setVisible(true);          

@@ -318,7 +318,7 @@ public class UserManagementView extends javax.swing.JFrame {
     private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Are you sure, you want to change password of the following user?\n\nUsername: " + txtUsername.getText(), "Change Password", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
             JPasswordField pwdField = new JPasswordField();
-            int retval = JOptionPane.showConfirmDialog(null, pwdField, "Enter new password?\n(Minimum length: 4 characters)", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            int retval = JOptionPane.showConfirmDialog(null, pwdField, "Enter new password\n(Minimum length: 4 characters)", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
             if (retval == JOptionPane.OK_OPTION) {
                 String newPassword = new String(pwdField.getPassword());

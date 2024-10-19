@@ -15,7 +15,7 @@ public class MainView extends javax.swing.JFrame {
         initComponents();
         DB.createConnection();        
         this.setLocationRelativeTo(null);
-        lblUsername.setText("User: " + UserController.currentUser);
+        lblUsername.setText("Welcome, " + UserController.currentUser);
     }
     
     @Override

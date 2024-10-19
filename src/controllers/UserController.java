@@ -2,8 +2,8 @@
 package controllers;
 
 import dbpkg.DB;
+import models.User;
 import javax.swing.DefaultListModel;
-import models.*;
 import java.sql.*;
 
 public class UserController {
