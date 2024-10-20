@@ -148,6 +148,11 @@ public class UserManagementView extends javax.swing.JFrame {
 
         btnDelete.setText("Delete");
         btnDelete.setEnabled(false);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         lstUsers.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "User 1", "User 2", "User 3", "User 4", "User 5" };
@@ -338,6 +343,10 @@ public class UserManagementView extends javax.swing.JFrame {
             }
         }        
     }//GEN-LAST:event_btnChangePasswordActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddNew;
