@@ -30,6 +30,13 @@ public class VehicleManagementView extends javax.swing.JFrame {
             public void valueChanged(ListSelectionEvent event) {
                  if (!event.getValueIsAdjusting() && tblMain.getSelectedRow() != -1) {
                     //System.out.println(tblMain.getValueAt(tblMain.getSelectedRow(), 0).toString());
+                    
+                    switch (tblMain.getValueAt(tblMain.getSelectedRow(), 5).toString()) {
+                        case "Available" -> { btnReturn.setEnabled(false); btnReserve.setEnabled(true); }
+                        
+                        case "Reserved" -> { btnReturn.setEnabled(true); btnReserve.setEnabled(false); }
+                    }
+                    
                     btnEdit.setEnabled(true);
                     btnDelete.setEnabled(true);
                  }
@@ -59,7 +66,9 @@ public class VehicleManagementView extends javax.swing.JFrame {
             }
             
             btnEdit.setEnabled(false);
-            btnDelete.setEnabled(false);            
+            btnDelete.setEnabled(false);   
+            btnReturn.setEnabled(false);
+            btnReserve.setEnabled(false);
         
         } catch (SQLException e) {
             //ERROR_MESSAGE = e.getMessage();
@@ -124,6 +133,8 @@ public class VehicleManagementView extends javax.swing.JFrame {
         cboStatus = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         btnHelp = new javax.swing.JButton();
+        btnReserve = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -169,6 +180,7 @@ public class VehicleManagementView extends javax.swing.JFrame {
 
         jLabel1.setText("Vehicle No");
 
+        txtVehicleNo.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtVehicleNo.setNextFocusableComponent(txtMileage);
 
         jLabel2.setText("Type");
@@ -446,6 +458,26 @@ public class VehicleManagementView extends javax.swing.JFrame {
             }
         });
 
+        btnReserve.setBackground(new java.awt.Color(0, 102, 102));
+        btnReserve.setForeground(new java.awt.Color(255, 255, 255));
+        btnReserve.setText("Reserve");
+        btnReserve.setEnabled(false);
+        btnReserve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReserveActionPerformed(evt);
+            }
+        });
+
+        btnReturn.setBackground(new java.awt.Color(102, 51, 255));
+        btnReturn.setForeground(new java.awt.Color(255, 255, 255));
+        btnReturn.setText("Return");
+        btnReturn.setEnabled(false);
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -462,6 +494,10 @@ public class VehicleManagementView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(201, 201, 201)
                         .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -477,7 +513,9 @@ public class VehicleManagementView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose)
-                    .addComponent(btnHelp))
+                    .addComponent(btnHelp)
+                    .addComponent(btnReserve)
+                    .addComponent(btnReturn))
                 .addContainerGap())
         );
 
@@ -654,6 +692,20 @@ public class VehicleManagementView extends javax.swing.JFrame {
         filterStatus = cboStatus.getSelectedItem().toString();
     }//GEN-LAST:event_cboStatusActionPerformed
 
+    private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
+        String vehicleNo = tblMain.getValueAt(tblMain.getSelectedRow(), 0).toString();
+
+        VehicleRentalView f = new VehicleRentalView(this, vehicleNo);
+        f.setVisible(true);
+        btnReserve.setEnabled(false);
+        btnReturn.setEnabled(false);
+    }//GEN-LAST:event_btnReserveActionPerformed
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        VehicleRentalView f = new VehicleRentalView(this, txtVehicleNo.getText().toString());
+        f.setVisible(true);
+    }//GEN-LAST:event_btnReturnActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddNew;
     private javax.swing.JButton btnClose;
@@ -661,6 +713,8 @@ public class VehicleManagementView extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnLoad;
+    private javax.swing.JButton btnReserve;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cboStatus;
     private javax.swing.JComboBox<String> cboType;

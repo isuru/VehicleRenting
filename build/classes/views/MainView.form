@@ -29,7 +29,7 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="btnExit" pref="249" max="32767" attributes="0"/>
                   <Component id="btnUserManagement" pref="249" max="32767" attributes="0"/>
-                  <Component id="btnVehicleRental" pref="249" max="32767" attributes="0"/>
+                  <Component id="btnReports" pref="249" max="32767" attributes="0"/>
                   <Component id="btnLogout" pref="249" max="32767" attributes="0"/>
                   <Component id="btnVehicleManagement" pref="249" max="32767" attributes="0"/>
                   <Component id="lblUsername" alignment="1" max="32767" attributes="0"/>
@@ -43,13 +43,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
-              <Component id="btnVehicleRental" min="-2" pref="45" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Component id="btnVehicleManagement" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnUserManagement" min="-2" pref="45" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnReports" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
               <Component id="btnLogout" min="-2" pref="45" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnExit" min="-2" pref="45" max="-2" attributes="0"/>
@@ -59,11 +59,14 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnVehicleRental">
+    <Component class="javax.swing.JButton" name="btnReports">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Vehicle Rental"/>
+        <Property name="text" type="java.lang.String" value="Reports"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVehicleManagement">
       <Properties>

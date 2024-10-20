@@ -2,7 +2,6 @@
 package vehiclerenting;
 
 import views.LoginView;
-import views.MainView;
 
 /**
  *
@@ -45,8 +44,7 @@ public class App {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new LoginView().setVisible(true);
-                new MainView().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });        
     }
